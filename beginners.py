@@ -7,11 +7,23 @@ import pandas as pd
 #Load and read the data
 data = pd.read_csv("gcp_economic_sectors.csv")
 #To create a plotly figure for use by dcc.graph()
-fig = px.line(data, x='Year', y='GCP', title='GCP over the years')
+fig = px.line(
+    data, x='Year', 
+    y=['GCP'], 
+    title='GCP over the years', 
+    color_discrete_map={'GCP':'gold'}
+)
 
 
 fig.update_layout(
-    template='plotly.dark'
+    template ='plotly.dark',
+    xaxis_title = 'Year',
+    yaxis_title = 'GCP',
+    font = dict(
+        family ='Verdana, sans-serif'
+        size = 18,
+        color ='white',
+    )
 )
 
 
