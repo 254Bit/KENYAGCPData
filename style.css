@@ -1,0 +1,27 @@
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    background-color: #d4dde6;
+}
+
+/* Header Styling */
+#header-area{
+    background-color: black;
+    height: 216px;
+    margin: 0;
+    padding-top: 24px;
+}
+
+#header-title{
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#header-description{
+    color:aliceblue;
+    margin: 4px auto;
+    text-align: center;
+}

@@ -20,7 +20,7 @@ fig.update_layout(
     xaxis_title = 'Year',
     yaxis_title = 'GCP',
     font = dict(
-        family ='Verdana, sans-serif'
+        family ='Verdana, sans-serif',
         size = 18,
         color ='white',
     )
