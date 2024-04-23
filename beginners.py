@@ -33,8 +33,13 @@ app.title = 'GCP over the years'
 app.layout = html.Div(
     id='app-container',
     children=[
+        html.Div(
+            id='header-area',
+            style={'backgroundColor':'black'},
+        ),
         html.H1(
             id='header-title',
+            style={'color': 'white', 'fontFamily':'Verdana, sans-serif'},
             children='Kenya Gross County Product(2018-2020)Data Challenge',
             ),
         html.P(
