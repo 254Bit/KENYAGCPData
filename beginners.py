@@ -10,6 +10,11 @@ data = pd.read_csv("gcp_economic_sectors.csv")
 fig = px.line(data, x='Year', y='GCP', title='GCP over the years')
 
 
+fig.update_layout(
+    template='plotly.dark'
+)
+
+
 app = dash.Dash(__name__) #Constructor: Is creating the dash application
 app.title = 'GCP over the years'
 
