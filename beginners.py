@@ -1,6 +1,7 @@
 import dash
 from dash import html #Used to create HTML Objects
 from dash import dcc
+from dash.dependencies import Input, Output
 import plotly.express as px # To create our graphs, a powerful functionality for processing data with minimal preparation
 import pandas as pd
 import csv
@@ -15,19 +16,6 @@ fig = px.line(
     title='GCP over the years', 
     color_discrete_map={'GCP':'gold'}
 )
-
-
-fig.update_layout(
-    template ='plotly.dark',
-    xaxis_title = 'Year',
-    yaxis_title = 'GCP',
-    font = dict(
-        family ='Verdana, sans-serif',
-        size = 18,
-        color ='white',
-    )
-)
-
 
 app = dash.Dash(__name__) #Constructor: Is creating the dash application
 app.title = 'GCP over the years'
@@ -80,6 +68,31 @@ html.Div(
         config={'displayModeBar': False}
         ),
 ),
+
+@app.callback(
+    Output('GCP', 'figure'),
+    Input('county-filter', 'value')
+)
+def update_chart(county):
+    fig = px.line(
+    df, x='Year', 
+    y=['GCP'], 
+    title='GCP over the years', 
+    color_discrete_map={'GCP':'gold'}
+)
+
+
+fig.update_layout(
+    template ='plotly.dark',
+    xaxis_title = 'Year',
+    yaxis_title = 'GCP',
+    font = dict(
+        family ='Verdana, sans-serif',
+        size = 18,
+        color ='white',
+    )
+)
+    
 
 if __name__ == '__main__':
     app.run_server(debug=True)
