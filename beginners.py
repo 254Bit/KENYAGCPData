@@ -33,12 +33,24 @@ app.title = 'GCP over the years'
 app.layout = html.Div(
     id='app-container',
     children=[
-        html.H1('Kenya Gross County Product(2018-2020)Data Challenge'),
-        html.P('Year vs GCP'),
-        dcc.Graph(figure=fig)
-        
-    ]
-)
+        html.H1(
+            id='header-title',
+            children='Kenya Gross County Product(2018-2020)Data Challenge',
+            ),
+        html.P(
+            id='header-description',
+            children=('Year vs GCP'),
+            ),
+    ],
+),
+html.Div(
+    id='graph-container',
+    children= dcc.Graph(
+        id='price-chart',
+        figure=fig,
+        config={'displayModeBar': False}
+        ),
+),
 
 if __name__ == '__main__':
     app.run_server(debug=True)
