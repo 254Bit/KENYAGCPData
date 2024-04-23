@@ -3,12 +3,14 @@ from dash import html #Used to create HTML Objects
 from dash import dcc
 import plotly.express as px # To create our graphs, a powerful functionality for processing data with minimal preparation
 import pandas as pd
+import csv
 
 #Load and read the data
-data = pd.read_csv("gcp_economic_sectors.csv")
+df = pd.read_csv("gcpEconomicSectors.csv")
+df
 #To create a plotly figure for use by dcc.graph()
 fig = px.line(
-    data, x='Year', 
+    df, x='Year', 
     y=['GCP'], 
     title='GCP over the years', 
     color_discrete_map={'GCP':'gold'}
@@ -48,6 +50,28 @@ app.layout = html.Div(
             ),
     ],
 ),
+#Drop Down List
+html.Div(
+    id='menu-area',
+    children=[
+        html.Div(
+            children=[
+                html.Div(
+                    className='menu-title',
+                    children='County'
+                ),
+                dcc.Dropdown(
+                    id='county-filter',
+                    className='dropdown',
+                    options=[{'label':county,'value':county} for county in df.columns[1:]],
+                    clearable=False
+                )
+            ]
+            ),
+
+    ]
+)
+
 html.Div(
     id='graph-container',
     children= dcc.Graph(
