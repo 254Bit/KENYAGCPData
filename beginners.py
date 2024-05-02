@@ -4,11 +4,10 @@ from dash import dcc
 from dash.dependencies import Input, Output
 import plotly.express as px # To create our graphs, a powerful functionality for processing data with minimal preparation
 import pandas as pd
-import csv
 
 #Load and read the data
 df = pd.read_csv("gcpEconomicSectors.csv")
-df
+
 #To create a plotly figure for use by dcc.graph()
 fig = px.line(
     df, x='Year', 
